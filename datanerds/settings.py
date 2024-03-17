@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-fc@pbhw%4+(!@lzvkv9nrb2+(u%1jbid)=lw@cf2^fr^_74g0z'
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -80,15 +84,15 @@ WSGI_APPLICATION = 'datanerds.wsgi.application'
 #     }
 # }
 
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'data_nerds_v1',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost', # ou l'adresse de votre serveur MySQL
-        'PORT': '3306', # le port par défaut de MySQL
+        'ENGINE': 'django.db.backends.postgresql',        
+        'URL': f"postgresql://postgres:{os.getenv('POSTGRES_PASSWORD')}@monorail.proxy.rlwy.net:26409/railway",
+        'NAME': "railway",
+        'USER': "postgres",
+        'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
+        'HOST': "monorail.proxy.rlwy.net",
+        'PORT': 26409,
     }
 }
 
