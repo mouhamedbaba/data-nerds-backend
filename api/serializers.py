@@ -6,7 +6,7 @@ from .models import NavetteAeroport
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ["id",'url', 'username', 'email', 'is_staff']
+        fields = "__all__"
         
 class NavetteSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
