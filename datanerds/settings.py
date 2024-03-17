@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', "now.sh", "localhost"]
 
 
 CORS_ALLOWED_ORIGINS = [
-"http://localhost:8000", "http://localhost:3000", "https://datanerds.vercel.app/"
+"http://localhost:8000", "http://localhost:3000", "https://datanerds.vercel.app"
 ]
 
 
@@ -151,3 +151,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
