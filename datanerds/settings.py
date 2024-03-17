@@ -32,6 +32,13 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', "now.sh", "localhost"]
 
 
+
+CORS_ALLOWED_ORIGINS = [
+"http://localhost:8000", "http://localhost:3000", "https://datanerds.vercel.app/"
+]
+
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "api",
     "rest_framework",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -53,6 +61,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'datanerds.urls'
