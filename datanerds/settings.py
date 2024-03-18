@@ -92,15 +92,26 @@ WSGI_APPLICATION = 'datanerds.wsgi.application'
 
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',        
+#         'URL': f"postgresql://postgres:{os.getenv('POSTGRES_PASSWORD')}@monorail.proxy.rlwy.net:26409/railway",
+#         'NAME': "railway",
+#         'USER': "postgres",
+#         'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
+#         'HOST': "monorail.proxy.rlwy.net",
+#         'PORT': 26409,
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',        
-        'URL': f"postgresql://postgres:{os.getenv('POSTGRES_PASSWORD')}@monorail.proxy.rlwy.net:26409/railway",
-        'NAME': "railway",
-        'USER': "postgres",
-        'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
-        'HOST': "monorail.proxy.rlwy.net",
-        'PORT': 26409,
+        'URL': "postgres://default:PV0iJvBOpU5A@ep-super-pond-a4az6n5h-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require",
+        'NAME': "verceldb",
+        'USER': "default",
+        'PASSWORD': "PV0iJvBOpU5A",
+        'HOST': "ep-super-pond-a4az6n5h-pooler.us-east-1.aws.neon.tech",
+        'PORT': 5432,
     }
 }
 

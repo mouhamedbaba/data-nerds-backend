@@ -12,11 +12,11 @@ class TypeCar(models.Model):
 
 class City(models.Model):
     name = models.CharField(max_length=100)
-    localisation = models.CharField(max_length=100, null=True, blank=True)
+    localisation = models.JSONField(null=True, blank=True, default=dict)
     code = models.CharField(max_length=100)
     status = models.BooleanField(default=True)
     is_airport = models.BooleanField(default=False)
-    destination_city = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True)
+    is_destination_city = models.BooleanField(default=False)
     description_city = models.TextField(null=True, blank=True)
     picture_city = models.URLField(null=True, blank=True)
     gallerie_city = models.JSONField(default=list)
@@ -135,3 +135,14 @@ class Rentalcar(models.Model):
 
     def __str__(self):
         return self.code
+
+class ImageUrl(models.Model):
+    url = models.URLField()
+    def __str__(self):
+        return self.url
+
+    class Meta:
+        db_table = ''
+        managed = True
+        verbose_name = 'ImageUrl'
+        verbose_name_plural = 'ImageUrls'
